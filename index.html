@@ -30,19 +30,24 @@ body {
 #banner h1 {
     margin: 0;
     font-size: 3em;
-    background: linear-gradient(to right, rgb(0, 188, 212), rgb(255, 64, 129));
-    background-clip: text; /* Establece el clip de fondo como el texto */
-    -webkit-background-clip: text; /* Para navegadores basados en WebKit (Chrome, Safari) */
-    color: transparent; /* Hace el texto transparente */
-    animation: animateGradient 4s linear infinite; /* Ajusta la duración según tus necesidades */
+    cursor: pointer;
+    transition: transform 0.3s, font-size 0.3s;
+    background: linear-gradient(to right, rgb(255, 3, 255), rgb(255, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradientAnimation 5s linear infinite;
 }
 
-@keyframes animateGradient {
+@keyframes gradientAnimation {
     0% {
-        background-position: 100% 0%;
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
     }
     100% {
-        background-position: -100% 0%;
+        background-position: 0% 50%;
     }
 }
 
@@ -93,7 +98,6 @@ iframe {
         transform: translateY(0);
     }
 }
-
 
     </style>
 </head>
