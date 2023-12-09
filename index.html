@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Videos Futuristas</title>
     <style>
-        body {
+        body::before {
+            content: "";
             background-image: url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.8; /* Cambia la opacidad según sea necesario */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8; /* Ajusta la opacidad según sea necesario */
+        }
+        body {
             margin: 0;
             font-family: 'Arial', sans-serif;
             background-color: #1a1a1a;
