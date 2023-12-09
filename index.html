@@ -46,10 +46,13 @@
         .video-item {
             margin-bottom: 20px;
             opacity: 0;
+            transform: translateY(0);
+            animation: fadeInUp 1s forwards;
             transition: transform 0.5s, opacity 0.5s;
         }
 
         .video-item:hover {
+            /* Puedes agregar estilos hover si es necesario */
         }
 
         h2 {
@@ -71,6 +74,7 @@
                 opacity: 1;
             }
         }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
