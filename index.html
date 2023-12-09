@@ -69,19 +69,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 <body>
@@ -100,5 +87,17 @@
         </div>
         <!-- Agrega más videos según sea necesario -->
     </div>
+
+    <script>
+        // Añade este script para retrasar la animación al cargar la página
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("video-container").style.opacity = "1";
+            var videoItems = document.querySelectorAll(".video-item");
+            videoItems.forEach(function(item, index) {
+                item.style.transitionDelay = index * 0.2 + "s";
+                item.style.animationDelay = index * 0.2 + "s";
+            });
+        });
+    </script>
 </body>
 </html>
