@@ -19,9 +19,8 @@ body {
 
 #banner {
     width: 100%;
-    background: linear-gradient(to right, rgb(0, 188, 212), rgb(255, 64, 129));
     text-align: center;
-    padding: 20px; /* Ajusta el espacio interno del banner según tus necesidades */
+    padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
@@ -30,8 +29,21 @@ body {
 
 #banner h1 {
     margin: 0;
-    font-size: 3em; /* Ajusta el tamaño de la fuente según tus necesidades */
-    color: #ffffff;
+    font-size: 3em;
+    background: linear-gradient(to right, rgb(0, 188, 212), rgb(255, 64, 129));
+    background-clip: text; /* Establece el clip de fondo como el texto */
+    -webkit-background-clip: text; /* Para navegadores basados en WebKit (Chrome, Safari) */
+    color: transparent; /* Hace el texto transparente */
+    animation: animateGradient 4s linear infinite; /* Ajusta la duración según tus necesidades */
+}
+
+@keyframes animateGradient {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+    }
 }
 
 #video-container {
@@ -40,7 +52,7 @@ body {
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s forwards;
-    margin-top: 150px; /* Ajusta el espacio entre el banner y el contenido */
+    margin-top: 150px;
 }
 
 .video-item {
@@ -81,6 +93,7 @@ iframe {
         transform: translateY(0);
     }
 }
+
 
     </style>
 </head>
