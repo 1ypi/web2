@@ -46,7 +46,6 @@
         .video-item {
             margin-bottom: 20px;
             opacity: 0;
-            animation: fadeInUp 1s forwards;
             transition: transform 0.5s, opacity 0.5s;
         }
 
@@ -99,7 +98,6 @@
             var videoItems = document.querySelectorAll(".video-item");
             videoItems.forEach(function(item, index) {
                 item.style.transitionDelay = index * 0.2 + "s";
-                item.style.animationDelay = index * 0.2 + "s";
             });
         });
     </script>
