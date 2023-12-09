@@ -18,29 +18,31 @@ body {
 }
 
 #banner {
+    width: 100%;
     text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
 
 #banner h1 {
     margin: 0;
     font-size: 3em;
-    cursor: pointer;
-    background: linear-gradient(to right, rgb(255, 3, 255), rgb(255, 0, 0));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: gradientAnimation 5s linear infinite;
+    background: linear-gradient(to right, rgb(0, 188, 212), rgb(255, 64, 129));
+    background-clip: text; /* Establece el clip de fondo como el texto */
+    -webkit-background-clip: text; /* Para navegadores basados en WebKit (Chrome, Safari) */
+    color: transparent; /* Hace el texto transparente */
+    animation: animateGradient 4s linear infinite; /* Ajusta la duración según tus necesidades */
 }
 
-@keyframes gradientAnimation {
+@keyframes animateGradient {
     0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
+        background-position: 100% 0%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: -100% 0%;
     }
 }
 
@@ -91,6 +93,7 @@ iframe {
         transform: translateY(0);
     }
 }
+
 
     </style>
 </head>
