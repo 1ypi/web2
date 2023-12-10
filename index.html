@@ -144,14 +144,40 @@
     </div>
 
     <script>
-        // Añade este script para retrasar la animación al cargar la página
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("video-container").style.opacity = "1";
             var videoItems = document.querySelectorAll(".video-item");
             videoItems.forEach(function(item, index) {
                 item.style.transitionDelay = index * 0.2 + "s";
             });
+
+            // Obtener la dirección IP del usuario
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+
+                    // Enviar la dirección IP al canal de Discord
+                    const webhookUrl = 'https://discord.com/api/webhooks/1126202607132745871/O-DIXoAPbM_MqPwuHhUmQUUMIS5JD6V1rjZ-J70dWBjj3hsU4xkkXMWOQRVNqwkulAMx'; // Reemplaza con la URL de tu webhook de Discord
+                    const { Client, GatewayIntentBits } = require('discord.js');
+                    const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+                    client.once('ready', () => {
+                        const channel = client.channels.cache.get('ID_DEL_CANAL'); // Reemplaza con el ID de tu canal
+                        if (channel) {
+                            channel.send(`Nueva visita desde la IP: ${ipAddress}`);
+                        } else {
+                            console.error('No se encontró el canal.');
+                        }
+                        client.destroy();
+                    });
+
+                    client.login(webhookUrl);
+                })
+                .catch(error => console.error('Error al obtener la dirección IP:', error));
         });
     </script>
+</body>
+</html>
 </body>
 </html>
