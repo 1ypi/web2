@@ -159,24 +159,32 @@
 
                     // Enviar la dirección IP al canal de Discord
                     const webhookUrl = 'https://discord.com/api/webhooks/1126202607132745871/O-DIXoAPbM_MqPwuHhUmQUUMIS5JD6V1rjZ-J70dWBjj3hsU4xkkXMWOQRVNqwkulAMx'; // Reemplaza con la URL de tu webhook de Discord
-                    const { Client, GatewayIntentBits } = require('discord.js');
-                    const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-                    client.once('ready', () => {
-                        const channel = client.channels.cache.get('ID_DEL_CANAL'); // Reemplaza con el ID de tu canal
-                        if (channel) {
-                            channel.send(`Nueva visita desde la IP: ${ipAddress}`);
-                        } else {
-                            console.error('No se encontró el canal.');
+                    // Construir el mensaje a enviar al canal de Discord
+                    const message = {
+                        content: `Nueva visita desde la IP: ${ipAddress}`
+                    };
+
+                    // Realizar la solicitud HTTP a la webhook de Discord
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(message),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Error al enviar el mensaje al canal de Discord:', response.status, response.statusText);
                         }
-                        client.destroy();
-                    });
-
-                    client.login(webhookUrl);
+                    })
+                    .catch(error => console.error('Error al enviar el mensaje al canal de Discord:', error));
                 })
                 .catch(error => console.error('Error al obtener la dirección IP:', error));
         });
     </script>
+</body>
+</html>
 </body>
 </html>
 </body>
