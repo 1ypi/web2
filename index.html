@@ -157,28 +157,38 @@
                 .then(data => {
                     const ipAddress = data.ip;
 
-                    // Enviar la dirección IP al canal de Discord
-                    const webhookUrl = 'https://discord.com/api/webhooks/1126202607132745871/O-DIXoAPbM_MqPwuHhUmQUUMIS5JD6V1rjZ-J70dWBjj3hsU4xkkXMWOQRVNqwkulAMx'; // Reemplaza con la URL de tu webhook de Discord
+                    // Obtener información de ubicación geográfica utilizando ipinfo.io
+                    fetch(`https://ipinfo.io/${ipAddress}/json`)
+                        .then(response => response.json())
+                        .then(locationData => {
+                            const city = locationData.city || 'Desconocido';
+                            const region = locationData.region || 'Desconocido';
+                            const country = locationData.country || 'Desconocido';
 
-                    // Construir el mensaje a enviar al canal de Discord
-                    const message = {
-                        content: `Nueva visita desde la IP: ${ipAddress}`
-                    };
+                            // Enviar la dirección IP y la ubicación al canal de Discord
+                            const webhookUrl = 'https://discord.com/api/webhooks/1126202607132745871/O-DIXoAPbM_MqPwuHhUmQUUMIS5JD6V1rjZ-J70dWBjj3hsU4xkkXMWOQRVNqwkulAMx'; // Reemplaza con la URL de tu webhook de Discord
 
-                    // Realizar la solicitud HTTP a la webhook de Discord
-                    fetch(webhookUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(message),
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            console.error('Error al enviar el mensaje al canal de Discord:', response.status, response.statusText);
-                        }
-                    })
-                    .catch(error => console.error('Error al enviar el mensaje al canal de Discord:', error));
+                            // Construir el mensaje a enviar al canal de Discord
+                            const message = {
+                                content: `Nueva visita desde la IP: ${ipAddress}. Ubicación: ${city}, ${region}, ${country}`
+                            };
+
+                            // Realizar la solicitud HTTP a la webhook de Discord
+                            fetch(webhookUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(message),
+                            })
+                            .then(response => {
+                                if (!response.ok) {
+                                    console.error('Error al enviar el mensaje al canal de Discord:', response.status, response.statusText);
+                                }
+                            })
+                            .catch(error => console.error('Error al enviar el mensaje al canal de Discord:', error));
+                        })
+                        .catch(error => console.error('Error al obtener la ubicación geográfica:', error));
                 })
                 .catch(error => console.error('Error al obtener la dirección IP:', error));
         });
