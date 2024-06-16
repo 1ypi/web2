@@ -1,26 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = document.querySelectorAll('.product');
     const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modal-image');
     const modalDescription = document.getElementById('modal-description');
     const modalPrice = document.getElementById('modal-price');
     const closeModal = document.querySelector('.close');
+    const counter = document.getElementById('counter');
+    const buttons = document.querySelectorAll('.product button');
 
     const accountDetails = {
         básica: {
-            image: 'url_de_imagen_basica.jpg',
             description: 'Cuenta Básica con $100,000,000 en GTA Online.',
             originalPrice: '20€',
             discountedPrice: '10€'
         },
         premium: {
-            image: 'url_de_imagen_premium.jpg',
             description: 'Cuenta Premium con $500,000,000 en GTA Online.',
             originalPrice: '24€',
             discountedPrice: '14€'
         },
         élite: {
-            image: 'url_de_imagen_elite.jpg',
             description: 'Cuenta Élite con $1,000,000,000 en GTA Online.',
             originalPrice: '29€',
             discountedPrice: '19€'
@@ -32,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const accountType = product.getAttribute('data-account');
             const details = accountDetails[accountType];
 
-            modalImage.src = details.image;
+
             modalDescription.textContent = details.description;
             modalPrice.innerHTML = `<span class="original-price">${details.originalPrice}</span>${details.discountedPrice}`;
 
@@ -40,13 +38,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
+    let interval;
+
+    const startCounter = (targetAmount) => {
+        counter.innerText = '$0';
+        let count = 0;
+        const target = targetAmount;
+        const increment = target / (1 * 100); // 10 seconds divided into 100ms intervals
+
+        interval = setInterval(() => {
+            count += increment;
+            if (count >= target) {
+                clearInterval(interval);
+                counter.innerText = '$' + target.toLocaleString();
+            } else {
+                counter.innerText = '$' + Math.floor(count).toLocaleString();
+            }
+        }, 100);
+    };
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            let targetAmount;
+            if (button.parentElement.dataset.account === 'básica') {
+                targetAmount = 100000000;
+            } else if (button.parentElement.dataset.account === 'premium') {
+                targetAmount = 500000000;
+            } else if (button.parentElement.dataset.account === 'élite') {
+                targetAmount = 1000000000;
+            }
+            startCounter(targetAmount);
+            modal.style.display = 'flex';
+        });
     });
+
+    const closeModalHandler = () => {
+        clearInterval(interval);
+        counter.innerText = '0'; // Reinicia el contador a 0
+        modal.style.display = 'none';
+    };
+
+    closeModal.addEventListener('click', closeModalHandler);
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
-            modal.style.display = 'none';
+            closeModalHandler();
         }
     });
 });
