@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -39,19 +40,24 @@ header {
 }
 
 main {
+    justify-content: center;
     flex: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .product-list {
+    margin-top: 0px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
+    width: 100%;
 }
+
 
 .product {
     background-color: rgba(255, 255, 255, 0.8);
@@ -87,6 +93,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
+    margin-bottom: 0px;
 }
 
 .payment-methods {
@@ -96,7 +103,7 @@ footer {
     align-items: center;
     padding: 10px;
     position: absolute;
-    bottom: 10px;
+    bottom: 3px;
     left: 10px;
 }
 
@@ -180,4 +187,14 @@ h1 {
     text-decoration: line-through;
     color: #999;
     margin-right: 5px;
+}
+
+.offer-banner {
+    background-color: rgba(183, 0, 255, 0.459);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.425);
+    color: #000000a4;
+    text-align: center;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
