@@ -183,6 +183,15 @@ h1 {
     background-clip: text;
     color: transparent;
 }
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+}
 
 .price {
     font-size: 18px;
