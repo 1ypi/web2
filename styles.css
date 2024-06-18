@@ -188,6 +188,8 @@ h1 {
         margin-bottom: 20px;
     }    
     body {
+        max-width: 100%;
+        overflow-x: hidden;
         overflow: auto;
     }
 
