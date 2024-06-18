@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
+    overflow-x: hidden; /* Evita el deslizamiento horizontal */
 }
 
 body::-webkit-scrollbar {
@@ -189,7 +190,6 @@ h1 {
     }    
     body {
         max-width: 100%;
-        overflow-x: hidden;
         overflow: auto;
     }
 
