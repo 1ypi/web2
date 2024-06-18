@@ -3,7 +3,6 @@ body {
     background-image: url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     color: #333;
     margin: 0;
     padding: 0;
@@ -11,11 +10,12 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
-    overflow-x: hidden; /* Evita el deslizamiento horizontal */
+    overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
     display: none;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -23,7 +23,6 @@ body::-webkit-scrollbar {
     background: linear-gradient(rgba(26, 26, 26, 0.3), rgba(26, 26, 26, 0.3)), url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     position: fixed;
     top: 0;
     left: 0;
@@ -39,6 +38,8 @@ header {
     padding: 20px 0;
     text-align: center;
     margin-bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 main {
@@ -48,6 +49,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .product-list {
@@ -58,6 +60,7 @@ main {
     justify-content: center;
     padding: 20px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -68,6 +71,7 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.425);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 300px;
 }
 
 .product:hover {
@@ -96,6 +100,8 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .payment-methods {
@@ -133,6 +139,8 @@ footer {
     border-radius: 8px;
     position: relative;
     text-align: center;
+    max-width: 90%;
+    box-sizing: border-box;
 }
 
 .close {
@@ -224,4 +232,6 @@ h1 {
     padding: 10px 30px;
     margin-bottom: 20px;
     border-radius: 10px;
+    max-width: 90%; /* Limita el ancho máximo del modal */
+    box-sizing: border-box;
 }
