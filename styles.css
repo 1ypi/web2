@@ -183,6 +183,9 @@ h1 {
     color: transparent;
 }
 @media (max-width: 768px) {
+    header {
+        margin-bottom: 20px
+    {    
     body {
         overflow: auto;
     }
@@ -191,7 +194,7 @@ h1 {
         font-size: 42px;
     }
     .offer-banner {
-        padding: 5px 15px;
+        padding: 0px 10px;
         font-size: 14px;
     }
     .payment-methods img {
