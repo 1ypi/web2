@@ -3,7 +3,7 @@ body {
     background-image: url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #333;
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
     background: linear-gradient(rgba(26, 26, 26, 0.3), rgba(26, 26, 26, 0.3)), url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
     position: fixed;
     top: 0;
     left: 0;
