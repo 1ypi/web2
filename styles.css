@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-image: url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
     background-size: cover;
+    background-color: rgb(191, 64, 191);
     background-position: center;
     color: #333;
     margin: 0;
@@ -199,6 +200,11 @@ h1 {
     body {
         max-width: 100%;
         overflow: auto;
+    }
+    
+    body::before {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://img.freepik.com/vector-gratis/fondo-siluetas-palmeras-verano_23-2148563740.jpg?w=1380&t=st=1702149743~exp=1702150343~hmac=7f3bfdb1baa4ca72815decd28524024a9be72c9623bfb9eecd878e36f2272bad');
+        filter: none; /* Elimina el desenfoque (blur) */
     }
 
     h1 {
