@@ -103,7 +103,6 @@ footer {
     align-items: center;
     padding: 10px;
     position: absolute;
-    bottom: 3px;
     left: 10px;
 }
 
@@ -194,6 +193,9 @@ h1 {
     .offer-banner {
         padding: 5px 15px;
         font-size: 14px;
+    }
+    .payment-methods img {
+        width: 20px;
     }
 }
 
