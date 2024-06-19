@@ -268,3 +268,12 @@ footer ul li a {
     color: #fff;
     text-decoration: none;
 }
+
+body.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+body.visible {
+    opacity: 1;
+}
