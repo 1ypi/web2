@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Downloader</h1>
+        <form id="downloadForm">
+            <label for="platform">Choose platform:</label>
+            <select id="platform">
+                <option value="youtube">YouTube</option>
+                <option value="tiktok">TikTok</option>
+            </select>
+            <label for="url">Video URL:</label>
+            <input type="text" id="url" placeholder="Enter video URL here..." required>
+            <button type="submit">Download Video</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const platform = document.getElementById('platform').value;
+            const url = document.getElementById('url').value.trim();
+            const messageDiv = document.getElementById('message');
+
+            if (!url) {
+                messageDiv.textContent = 'Please enter a valid URL.';
+                return;
+            }
+
+            fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ platform, url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.textContent = `Video downloaded successfully: ${data.filePath}`;
+                    messageDiv.style.color = '#28a745';
+                } else {
+                    messageDiv.textContent = `Error: ${data.error}`;
+                    messageDiv.style.color = '#dc3545';
+                }
+            })
+            .catch(error => {
+                messageDiv.textContent = `Error: ${error.message}`;
+                messageDiv.style.color = '#dc3545';
+            });
+        });
+    </script>
+</body>
+</html>
